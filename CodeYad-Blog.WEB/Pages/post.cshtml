@@ -1,0 +1,28 @@
+﻿@page "{slug}"
+@model CodeYad_Blog.WEB.Pages.postModel
+@using CodeYad_Blog.CoreLayer.Utilities;
+
+@{
+    ViewData["Title"] = Model.Post.Title;
+} 
+<div class="container">
+    <ul class="breadcrumbs">
+        <li class="breadcrumbs__item">
+            <a asp-page="Index" class="breadcrumbs__url">خانه</a>
+        </li>
+        <li class="breadcrumbs__item">
+            <a asp-page="Category" asp-route-categoryTitle="@Model.Post.Category.Slug" class="breadcrumbs__url">@Model.Post.Category.Title</a>
+        </li>
+        @if (Model.Post.SubCategory != null)
+        {
+            <li class="breadcrumbs__item">
+                <a asp-page="Category" asp-route-categoryTitle="@Model.Post.SubCategory.Slug" class="breadcrumbs__url">@Model.Post.SubCategory.Title</a>
+            </li>
+        }
+        <li class="breadcrumbs__item breadcrumbs__item--current">
+            @Model.Post.Title
+        </li>
+    </ul>
+</div>
+
+
